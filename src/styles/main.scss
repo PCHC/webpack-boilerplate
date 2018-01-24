@@ -1,2 +1,226 @@
+// Import variables
+@import "./common/variables";
+
 // Import everything from autoload
 @import "./autoload/**/*";
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  text-align: left;
+  background-color: #fff;
+}
+
+a {
+  &, &:visited {
+    color: $pchc-blue;
+    text-decoration: none;
+  }
+
+  &:hover {
+    color: lighten($pchc-blue, 10%);
+    text-decoration: underline;
+  }
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+}
+
+#video {
+  order: -1;
+  background: $pchc-blue;
+  width: 100%;
+  height: (315 / 820) * 100vw;
+}
+
+section {
+  padding: 3rem 1rem 1rem;
+
+  h2 {
+    margin: 0 auto;
+    font-weight: 200;
+    font-size: 2.5rem;
+    line-height: 1.5;
+    text-align: center;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    max-width: 60%;
+    border-bottom: 1px solid #424242;
+  }
+
+  p {
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+
+  .content {
+    &--text {
+      padding: 2rem;
+      max-width: 60%;
+
+      h2 {
+        max-width: 100%;
+      }
+
+      p {
+        font-size: 1.25rem;
+        font-weight: 300;
+        text-align: justify;
+      }
+    }
+  }
+}
+
+header {
+  padding: 0;
+  background: rgba($pchc-brown, 0.1);
+  width: 100%;
+  margin-bottom: -3rem;
+  z-index: 10;
+
+  &.fixed {
+    position: fixed;
+    top: 0;
+    background: rgba(#fff, 0.9);
+  }
+
+  nav {
+    ul,
+    li {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+    }
+
+    ul {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: center;
+
+      @for $i from 1 through 5 {
+        :nth-child(#{$i}) {
+          order: calc(#{$i} - 1);
+        }
+      }
+
+      .logo {
+        order: 3;
+      }
+    }
+
+    li {
+      margin: 0 1rem;
+
+      > a {
+        display: inline-block;
+        line-height: 1;
+        padding: 1em;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+
+        &:hover {
+          color: $pchc-red;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
+
+#past {
+  background: $blue-grey-50;
+  padding-bottom: 0;
+}
+
+.timeline {
+  $timelineColor: #616161;
+
+  &__row {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+
+    > div {
+      width: 50%;
+    }
+
+    &:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+  }
+
+  &__content {
+    padding: 0 3rem 0 8rem;
+
+    h3 {
+      text-align: right;
+    }
+
+    p {
+      text-align: justify;
+    }
+
+    .timeline__row:nth-child(even) & {
+      width: calc(50% - 1px);
+      padding: 0 8rem 0 3rem;
+
+      h3 {
+        text-align: left;
+      }
+    }
+
+  }
+
+  &__image {
+    color: #f0f;
+    width: calc(50% - 1px);
+    border-left: 1px solid $timelineColor;
+    position: relative;
+    z-index: 1;
+
+    &::before {
+      content: '';
+      display: block;
+      width: 50%;
+      height: 1px;
+      background: $timelineColor;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      z-index: -1;
+    }
+
+    &--wrap {
+      padding: 2rem 8rem;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+      border-radius: 50%;
+      margin: 0 auto;
+      border: 0.5rem #fff solid;
+      box-shadow: 0 15px 35px rgba(50,50,93,.1), 0 5px 15px rgba(0,0,0,.07);
+    }
+
+    .timeline__row:nth-child(even) & {
+      border-left: none;
+      border-right: 1px solid $timelineColor;
+      width: calc(50% + 1px);
+
+      &::before {
+        left: auto;
+        right: 0;
+      }
+    }
+  }
+}
