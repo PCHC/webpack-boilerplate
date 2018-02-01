@@ -7,6 +7,7 @@ const CopyGlobsPlugin = require('copy-globs-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const GoogleFontsPlugin = require('google-fonts-webpack-plugin');
 
 const config = require('./config');
 
@@ -135,6 +136,13 @@ let webpackConfig = {
       template: `${config.paths.assets}/index.html`,
     }),
     new FriendlyErrorsWebpackPlugin(),
+    new GoogleFontsPlugin({
+      fonts: [
+        { family: "Lato", variants: [ "300", "400", "700" ] }
+      ],
+      filename: 'fonts/fonts.css',
+      path: 'fonts/'
+    })
   ],
 };
 
