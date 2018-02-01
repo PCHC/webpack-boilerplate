@@ -13,6 +13,8 @@ $responsive-breakpoints: (
   xl: 1200px
 ) !default;
 
+$main-breakpoint: md;
+
 // Hamburgers.css settings:
 $hamburger-multiplier                      : 1;
 $hamburger-padding-x                       : 1rem * $hamburger-multiplier;

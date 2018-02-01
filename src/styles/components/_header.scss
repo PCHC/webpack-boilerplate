@@ -1,0 +1,144 @@
+header {
+  height: 6rem;
+  z-index: 100;
+
+  @include media-breakpoint-up($main-breakpoint) {
+    height: auto;
+  }
+}
+
+nav {
+  background: #eee;
+  position: fixed;
+  width: 100%;
+  background: rgba(#fff, 0.95);
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
+
+  ul,
+  li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+
+    @include media-breakpoint-up($main-breakpoint) {
+      flex-direction: row;
+      align-items: center;
+
+      @for $i from 1 through 5 {
+        li:nth-child(#{$i}) {
+          order: calc(#{$i} - 1);
+        }
+      }
+    }
+  }
+
+  a {
+    display: block;
+    line-height: 1;
+    margin: 0 0.5em;
+    padding: 0.5em 1em;
+    transition: color 0.15s ease-out;
+
+    &:hover {
+      color: $pchc-red;
+      text-decoration: none;
+    }
+
+    @include media-breakpoint-up($main-breakpoint) {
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 1.1rem;
+      letter-spacing: 0.05em;
+    }
+  }
+
+  li {
+    display: none;
+
+    @include media-breakpoint-up($main-breakpoint) {
+      display: block;
+      flex: 0 1 17.5%;
+      text-align: center;
+    }
+  }
+
+  .logo {
+    flex: 1 1 100%;
+    display: block;
+
+    a {
+      margin: 0;
+      padding: 0;
+      height: 6rem;
+      display: block;
+      max-width: 15rem;
+
+      @include media-breakpoint-up($main-breakpoint) {
+        height: auto;
+        max-width: none;
+      }
+    }
+
+    svg {
+      margin: 1rem;
+
+      @include media-breakpoint-up($main-breakpoint) {
+
+      }
+    }
+
+    @include media-breakpoint-up($main-breakpoint) {
+      flex: 0 2 30%;
+
+      @at-root {
+        nav ul li:first-child {
+          order: 3;
+        }
+      }
+    }
+  }
+
+  button.hamburger {
+    position: absolute;
+    top: 1rem;
+    right: 0;
+    z-index: 10;
+    outline: none;
+
+    @include media-breakpoint-up($main-breakpoint) {
+      display: none;
+    }
+  }
+
+  &.is-active {
+    height: 100vh;
+
+    ul {
+      flex-direction: column;
+      flex-wrap: nowrap;
+      height: calc(100vh - 6rem);
+      justify-content: space-between;
+    }
+
+    li {
+      display: block;
+    }
+
+    .logo {
+      flex: 0 1 auto;
+    }
+
+    a {
+      font-size: 2rem;
+      font-weight: 300;
+      text-align: center;
+    }
+  }
+}
