@@ -4,6 +4,15 @@ $pchc-brown: #8d7167;
 
 $blue-grey-50: #eceff1;
 
+// Breakpoints:
+$responsive-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+) !default;
+
 // Hamburgers.css settings:
 $hamburger-multiplier                      : 1;
 $hamburger-padding-x                       : 1rem * $hamburger-multiplier;
