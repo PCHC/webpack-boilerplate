@@ -138,7 +138,7 @@ let webpackConfig = {
     new FriendlyErrorsWebpackPlugin(),
     new GoogleFontsPlugin({
       fonts: [
-        { family: "Lato", variants: [ "300", "400", "700" ] }
+        { family: "Lato", variants: [ "300", "400", "700", "900" ] }
       ],
       filename: 'fonts/fonts.css',
       path: 'fonts/'
